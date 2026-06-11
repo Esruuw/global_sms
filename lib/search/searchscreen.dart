@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:main/categoriesPage/CategoriesView%20.dart';
+import 'package:main/createpost/createpost.dart';
+import 'package:main/login/CreateAccountView.dart';
+import 'package:main/nations/SearchNationsPage.dart';
 import 'package:main/postview/postview.dart';
+import 'package:main/Carts/cartpage.dart';
 
 
 class MyApp extends StatelessWidget {
@@ -36,6 +41,34 @@ class _SearchScreenState extends State<SearchScreen> {
     _NavItem(icon: Icons.shopping_cart_outlined, label: 'Cart'),
     _NavItem(icon: Icons.add_circle_outline, label: 'Post'),
   ];
+
+  void _onNavTap(int index) {
+    setState(() => _selectedNavIndex = index);
+    switch (index) {
+      case 0:
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const SearchNationsScreen()),
+        );
+      case 1:
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const GlobalVMailsScreen()),
+        );
+      case 2:
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const CategoriesScreen()),
+        );
+      case 3:
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const CartScreen()),
+        );
+      case 4:
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const CreatePostScreen()),
+        );
+
+       
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +155,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         final item = _navItems[index];
                         final isSelected = index == _selectedNavIndex;
                         return GestureDetector(
-                          onTap: () => setState(() => _selectedNavIndex = index),
+                          onTap: () => _onNavTap(index),
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                             decoration: BoxDecoration(
