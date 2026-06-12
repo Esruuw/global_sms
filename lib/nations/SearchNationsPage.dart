@@ -16,6 +16,7 @@ class _SearchNationsScreenState extends State<SearchNationsScreen> {
   String _query = '';
 
   static const List<String> _allNations = [
+    'USA',
     'Liechtenstein',
     'Luxembourg',
     'Ireland',
@@ -279,6 +280,7 @@ class _SearchNationsScreenState extends State<SearchNationsScreen> {
                           ),
                         ),
                       ),
+
                       const SizedBox(width: 28),
                     ],
                   ),
@@ -307,6 +309,17 @@ class _SearchNationsScreenState extends State<SearchNationsScreen> {
                           ),
                         ),
                         const SizedBox(height: 14),
+
+                        // Instruction above search
+                        const Text(
+                          'Each nation has its own forum, search by phone area code in the nation',
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
 
                         // Search bar
                         Container(

@@ -203,10 +203,10 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'ANYBODY LOOKING FOR?',
+                      'Search a forum category forum meeting new voice messaging posts - letters for private long term video sessions getting to know your reason partner negotiating & chatting better each time',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 12,
+                        fontSize: 10,
                         fontWeight: FontWeight.bold,
                         letterSpacing: 1.2,
                       ),
