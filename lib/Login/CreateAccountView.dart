@@ -34,6 +34,7 @@ class _GlobalVMailsScreenState extends State<GlobalVMailsScreen> {
     'You must video chat or voice message to come to equal agreements for the proposed letter post interested in respect of others privacy',
     'You have the freedom to post as you feel but agree to use respectful typing and no full nudity',
     'You agree to use the voice to video meet technology for interviewing and meeting for the interested letter or post, whether long distance or near',
+    'Be careful of what you say, and always get to know the other person first through video chat sessions',
     
 
   ];
@@ -42,6 +43,7 @@ class _GlobalVMailsScreenState extends State<GlobalVMailsScreen> {
     'I agree with the privacy clause of each user having their own privacy freedom',
     'I agree to abide by the rules of the forum for use',
     'I agree to use respectful typing & respectful language',
+    'I /you agree you are 20 years of age & older',
     'I agree to terms of use',
   ];
 
@@ -143,7 +145,7 @@ class _GlobalVMailsScreenState extends State<GlobalVMailsScreen> {
                   // ── Agreement checkboxes ─────────────────────────────────
                   _AgreementSection(
                     agreements: _agreements,
-                    values: [_agreePrivacy, _agreeRules, _agreeLanguage, _agreeAge],
+                    values: [_agreePrivacy, _agreeRules, _agreeLanguage, _agreeAge, _agreeRules],
                     onChanged: (index, val) {
                       setState(() {
                         switch (index) {
@@ -151,6 +153,8 @@ class _GlobalVMailsScreenState extends State<GlobalVMailsScreen> {
                           case 1: _agreeRules = val; break;
                           case 2: _agreeLanguage = val; break;
                           case 3: _agreeAge = val; break;
+                          case 4: _agreeRules = val; break;
+
                         }
                       });
                     },

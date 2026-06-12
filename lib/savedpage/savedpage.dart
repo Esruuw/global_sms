@@ -78,8 +78,10 @@ class _SavedPostsScreenState extends State<SavedPostsScreen> {
                     children: [
                       // Hamburger
                       GestureDetector(
-                        onTap: () {},
-                        child: const Icon(Icons.menu,
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const Icon(Icons.arrow_back_ios_new,
                             color: Colors.white, size: 28),
                       ),
                       // Title

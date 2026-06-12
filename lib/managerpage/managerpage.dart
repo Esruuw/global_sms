@@ -7,7 +7,7 @@ class Managerpage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Manager',
+      title: 'MANAGE YOUR RELATIONS',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true),
       home: const ManagerScreen(),
@@ -85,20 +85,16 @@ class _ManagerScreenState extends State<ManagerScreen> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) => const SelectDateTimeScreen(),
-                            ),
-                          );
+                          Navigator.of(context, rootNavigator: true).pop();
                         },
                         child: const Icon(
-                          Icons.menu,
+                          Icons.arrow_back_ios_new,
                           color: Colors.white,
                           size: 26,
                         ),
                       ),
                       const Text(
-                        'MANAGER',
+                        'MANAGE YOUR RELATIONS',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 17,
@@ -106,18 +102,27 @@ class _ManagerScreenState extends State<ManagerScreen> {
                           letterSpacing: 2.5,
                         ),
                       ),
-                      Container(
-                        width: 36,
-                        height: 36,
-                        decoration: BoxDecoration(
-                          color: Colors.white12,
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Colors.white24),
-                        ),
-                        child: const Icon(
-                          Icons.person_outline,
-                          color: Colors.white,
-                          size: 20,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => const SelectDateTimeScreen(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            color: Colors.white12,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.white24),
+                          ),
+                          child: const Icon(
+                            Icons.person_outline,
+                            color: Colors.white,
+                            size: 20,
+                          ),
                         ),
                       ),
                     ],

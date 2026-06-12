@@ -72,15 +72,20 @@ class _BlackLampScreenState extends State<BlackLampScreen> {
               children: [
                 // Top bar
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 10,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
                         onTap: () => Navigator.maybePop(context),
-                        child: const Icon(Icons.chevron_left,
-                            color: Colors.white, size: 30),
+                        child: const Icon(
+                          Icons.chevron_left,
+                          color: Colors.white,
+                          size: 30,
+                        ),
                       ),
                       Container(
                         width: 38,
@@ -90,8 +95,11 @@ class _BlackLampScreenState extends State<BlackLampScreen> {
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(color: Colors.white24),
                         ),
-                        child: const Icon(Icons.person_outline,
-                            color: Colors.white, size: 22),
+                        child: const Icon(
+                          Icons.person_outline,
+                          color: Colors.white,
+                          size: 22,
+                        ),
                       ),
                     ],
                   ),
@@ -136,9 +144,7 @@ class _BlackLampScreenState extends State<BlackLampScreen> {
                                 ),
                                 children: [
                                   TextSpan(
-                                    text: _isExpanded
-                                        ? _fullText
-                                        : _shortText,
+                                    text: _isExpanded ? _fullText : _shortText,
                                   ),
                                   if (!_isExpanded)
                                     const TextSpan(
@@ -182,7 +188,7 @@ class _BlackLampScreenState extends State<BlackLampScreen> {
                             children: [
                               Expanded(
                                 child: _OptionCheckbox(
-                                  label: 'Reply Post',
+                                  label: 'REPLY TO POST',
                                   value: _replyPost,
                                   onChanged: (val) =>
                                       setState(() => _replyPost = val),
@@ -190,7 +196,7 @@ class _BlackLampScreenState extends State<BlackLampScreen> {
                               ),
                               Expanded(
                                 child: _OptionCheckbox(
-                                  label: 'Schedule a video Meet',
+                                  label: 'SCHEDULE A 2\$ VIDEO SESSION',
                                   value: _scheduleVideoMeet,
                                   onChanged: (val) =>
                                       setState(() => _scheduleVideoMeet = val),
@@ -203,15 +209,17 @@ class _BlackLampScreenState extends State<BlackLampScreen> {
                             children: [
                               Expanded(
                                 child: _OptionCheckbox(
-                                  label: 'Offer to Pay Video Session',
+                                  label:
+                                      'OFFER TO PAY FOR THEIR VIDEO SESSION FOR THEM',
                                   value: _offerToPayVideoSession,
                                   onChanged: (val) => setState(
-                                      () => _offerToPayVideoSession = val),
+                                    () => _offerToPayVideoSession = val,
+                                  ),
                                 ),
                               ),
                               Expanded(
                                 child: _OptionCheckbox(
-                                  label: 'Send A VMAIL',
+                                  label: 'SEND A FREE VOICE MESSAGE',
                                   value: _sendAVmail,
                                   onChanged: (val) =>
                                       setState(() => _sendAVmail = val),
@@ -240,8 +248,9 @@ class _BlackLampScreenState extends State<BlackLampScreen> {
                                   borderRadius: BorderRadius.circular(30),
                                 ),
                                 elevation: 6,
-                                shadowColor:
-                                    const Color(0xFF7B3FF5).withOpacity(0.5),
+                                shadowColor: const Color(
+                                  0xFF7B3FF5,
+                                ).withOpacity(0.5),
                               ),
                               child: const Text(
                                 'Start',
@@ -333,9 +342,7 @@ class _ProfileImagePlaceholder extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Container(
-          color: const Color(0xFF2A2A2A),
-        ),
+        Container(color: const Color(0xFF2A2A2A)),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -346,7 +353,11 @@ class _ProfileImagePlaceholder extends StatelessWidget {
                 shape: BoxShape.circle,
                 color: Color(0xFF444444),
               ),
-              child: const Icon(Icons.person, size: 46, color: Color(0xFF888888)),
+              child: const Icon(
+                Icons.person,
+                size: 46,
+                color: Color(0xFF888888),
+              ),
             ),
             const SizedBox(height: 8),
             Container(
@@ -382,30 +393,47 @@ class _StarField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: _StarPainter(),
-      child: const SizedBox.expand(),
-    );
+    return CustomPaint(painter: _StarPainter(), child: const SizedBox.expand());
   }
 }
 
 class _StarPainter extends CustomPainter {
   static const List<Offset> _positions = [
-    Offset(0.05, 0.06), Offset(0.15, 0.20), Offset(0.28, 0.04),
-    Offset(0.40, 0.13), Offset(0.55, 0.02), Offset(0.68, 0.17),
-    Offset(0.80, 0.06), Offset(0.92, 0.22), Offset(0.96, 0.10),
-    Offset(0.07, 0.38), Offset(0.22, 0.52), Offset(0.36, 0.47),
-    Offset(0.50, 0.58), Offset(0.63, 0.44), Offset(0.76, 0.56),
-    Offset(0.89, 0.49), Offset(0.04, 0.68), Offset(0.17, 0.79),
-    Offset(0.33, 0.71), Offset(0.47, 0.84), Offset(0.61, 0.74),
-    Offset(0.74, 0.87), Offset(0.86, 0.77), Offset(0.98, 0.91),
+    Offset(0.05, 0.06),
+    Offset(0.15, 0.20),
+    Offset(0.28, 0.04),
+    Offset(0.40, 0.13),
+    Offset(0.55, 0.02),
+    Offset(0.68, 0.17),
+    Offset(0.80, 0.06),
+    Offset(0.92, 0.22),
+    Offset(0.96, 0.10),
+    Offset(0.07, 0.38),
+    Offset(0.22, 0.52),
+    Offset(0.36, 0.47),
+    Offset(0.50, 0.58),
+    Offset(0.63, 0.44),
+    Offset(0.76, 0.56),
+    Offset(0.89, 0.49),
+    Offset(0.04, 0.68),
+    Offset(0.17, 0.79),
+    Offset(0.33, 0.71),
+    Offset(0.47, 0.84),
+    Offset(0.61, 0.74),
+    Offset(0.74, 0.87),
+    Offset(0.86, 0.77),
+    Offset(0.98, 0.91),
   ];
 
   @override
   void paint(Canvas canvas, Size size) {
     for (int i = 0; i < _positions.length; i++) {
       final p = _positions[i];
-      final r = (i % 3 == 0) ? 1.4 : (i % 3 == 1) ? 1.0 : 0.6;
+      final r = (i % 3 == 0)
+          ? 1.4
+          : (i % 3 == 1)
+          ? 1.0
+          : 0.6;
       canvas.drawCircle(
         Offset(p.dx * size.width, p.dy * size.height),
         r,
@@ -414,9 +442,21 @@ class _StarPainter extends CustomPainter {
     }
     // A few bright accent stars
     final bright = Paint()..color = Colors.white.withOpacity(0.9);
-    canvas.drawCircle(Offset(size.width * 0.85, size.height * 0.28), 2.0, bright);
-    canvas.drawCircle(Offset(size.width * 0.12, size.height * 0.62), 1.8, bright);
-    canvas.drawCircle(Offset(size.width * 0.55, size.height * 0.42), 1.5, bright);
+    canvas.drawCircle(
+      Offset(size.width * 0.85, size.height * 0.28),
+      2.0,
+      bright,
+    );
+    canvas.drawCircle(
+      Offset(size.width * 0.12, size.height * 0.62),
+      1.8,
+      bright,
+    );
+    canvas.drawCircle(
+      Offset(size.width * 0.55, size.height * 0.42),
+      1.5,
+      bright,
+    );
   }
 
   @override

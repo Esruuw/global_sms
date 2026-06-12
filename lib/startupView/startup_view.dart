@@ -17,9 +17,7 @@ class _StartupViewState extends State<StartupView> {
     Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(
-          builder: (_) => const CategoriesScreen(),
-        ),
+        MaterialPageRoute(builder: (_) => const CategoriesScreen()),
       );
     });
   }
@@ -42,41 +40,41 @@ class _StartupViewState extends State<StartupView> {
           ),
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-          const SizedBox(height: 80),
+            const SizedBox(height: 80),
 
-          Center(
-            child: Container(
-              width: 80,
-              height: 5,
-              color: Colors.white,
+            Center(child: Container(width: 80, height: 5, color: Colors.white)),
+
+            const Spacer(),
+
+            // Image.asset(
+            //   'assets/startup_logo.png',
+            //   width: 220,
+            //   height: 220,
+            //   fit: BoxFit.contain,
+            // ),
+
+            const SizedBox(height: 24),
+
+            const Text(
+              '_Chat Session',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 28,
+                fontWeight: FontWeight.w400,
+              ),
             ),
-          ),
 
-          const Spacer(),
+            const Spacer(),
 
-          const Text(
-            '_Chat Session',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 28,
-              fontWeight: FontWeight.w400,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 40),
+              child: Container(width: 220, height: 5, color: Colors.white),
             ),
-          ),
-
-          const Spacer(),
-
-          Padding(
-            padding: const EdgeInsets.only(bottom: 40),
-            child: Container(
-              width: 220,
-              height: 5,
-              color: Colors.white,
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
-      )
     );
   }
 }
