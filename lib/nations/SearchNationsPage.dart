@@ -404,7 +404,7 @@ class _WorldMapCard extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             Image.network(
-              'https://www.bing.com/images/search?view=detailV2&ccid=PKBa7SLM&id=EFB0BDD58F21E861786379DC75FC046599B4726E&thid=OIP.PKBa7SLM90o5SxRN0PwvNAHaFS&mediaurl=https%3A%2F%2Fi.pinimg.com%2Foriginals%2Fd6%2Fb7%2F14%2Fd6b71417ffbb1aefec36c20aeec55ec2.jpg&exph=857&expw=1200&q=world+map&form=IRPRST&ck=F5D631C061249273175C921398FFE56B&selectedindex=12&itb=0&cw=1272&ch=596&ajaxhist=0&ajaxserp=0&cdnurl=https%3A%2F%2Fth.bing.com%2Fth%2Fid%2FR.3ca05aed22ccf74a394b144dd0fc2f34%3Frik%3DbnK0mWUE%252fHXceQ%26pid%3DImgRaw%26r%3D0&pivotparams=insightsToken%3Dccid_2urLCE9V*cp_E02D4E5DE8B774E5DF30F959EB00DB71*mid_C9BF733150DCDDF344E3E3DB5CAD14A290CCC5BF*thid_OIP.2urLCE9VYUtoW7vvySWI0wHaEy&vt=0&sim=11&iss=VSI&ajaxhist=0&ajaxserp=0',
+              'https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/secured-attachments/messaging_message/attachment/03ea098e10b2cd3e12fcb87248ae07c4-2196176201781196237279/1000002867.jpg?__cld_token__=exp=1781359016~hmac=743e61cad908dc9c063d401be3d8c2b60ee2ef25280407394be8efaee4c39712',
               fit: BoxFit.cover,
               loadingBuilder: (context, child, loadingProgress) {
                 if (loadingProgress == null) return child;

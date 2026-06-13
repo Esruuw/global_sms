@@ -49,12 +49,12 @@ class _StartupViewState extends State<StartupView> {
 
             const Spacer(),
 
-            // Image.asset(
-            //   'assets/startup_logo.png',
-            //   width: 220,
-            //   height: 220,
-            //   fit: BoxFit.contain,
-            // ),
+            Image.asset(
+              'assets/startup_logo.png',
+              width: 220,
+              height: 220,
+              fit: BoxFit.contain,
+            ),
 
             const SizedBox(height: 24),
 
