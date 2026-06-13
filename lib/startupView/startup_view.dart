@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:main/categoriesPage/CategoriesView%20.dart';
+import 'package:main/managerpage2/managerscreen.dart';
 
 class StartupView extends StatefulWidget {
   const StartupView({super.key});

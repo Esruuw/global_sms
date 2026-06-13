@@ -5,7 +5,8 @@ import 'package:main/login/CreateAccountView.dart';
 import 'package:main/nations/SearchNationsPage.dart';
 import 'package:main/postview/postview.dart';
 import 'package:main/Carts/cartpage.dart';
-import 'package:main/managerpage/managerpage.dart';
+import 'package:main/managerpage/managerpage.dart' hide ManagerScreen;
+import 'package:main/managerpage2/managerscreen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -134,7 +135,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (_) => const Managerpage(),
+                              builder: (_) => const ManagerScreen(),
                             ),
                           );
                         },

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:main/dateandtime/date_time_view.dart';
+import 'package:main/videochat/VideoChatScreen.dart';
 
 class Managerpage extends StatelessWidget {
   const Managerpage({super.key});
@@ -485,7 +486,11 @@ class _VoiceNotificationRowState extends State<_VoiceNotificationRow> {
             _ActionButton(
               icon: Icons.videocam_outlined,
               label: 'Video',
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const VideoChatScreen()),
+                );
+              },
             ),
             const SizedBox(width: 6),
             _ActionButton(

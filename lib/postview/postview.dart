@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:main/Carts/cartpage.dart';
-import 'package:main/cartpage2/cartpage2.dart' hide CartScreen;
-import 'package:main/savedpage/savedpage.dart';
-import 'package:main/search/searchscreen.dart';
 
 class postview extends StatelessWidget {
   const postview({super.key});
@@ -28,18 +25,81 @@ class BlackLampScreen extends StatefulWidget {
   State<BlackLampScreen> createState() => _BlackLampScreenState();
 }
 
-class _BlackLampScreenState extends State<BlackLampScreen> {
-  bool _replyPost = false;
+class _BlackLampScreenState extends State<BlackLampScreen>
+    with SingleTickerProviderStateMixin {
+  bool _replyPost = true;
   bool _scheduleVideoMeet = false;
   bool _offerToPayVideoSession = false;
   bool _sendAVmail = false;
   bool _isExpanded = false;
+  bool _isPlaying = false;
+
+  late AnimationController _pulseController;
 
   final String _fullText =
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua et dolore magna aliqua et dolore magna.';
 
   final String _shortText =
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua et dolore magna...';
+
+  // Waveform bar heights (normalized 0.0–1.0)
+  final List<double> _waveHeights = const [
+    0.25,
+    0.42,
+    0.58,
+    0.75,
+    0.92,
+    0.67,
+    0.83,
+    1.0,
+    0.58,
+    0.42,
+    0.75,
+    0.92,
+    0.67,
+    0.50,
+    0.83,
+    0.75,
+    0.58,
+    1.0,
+    0.83,
+    0.67,
+    0.50,
+    0.75,
+    0.92,
+    0.67,
+    0.42,
+    0.58,
+    0.83,
+    0.75,
+    0.50,
+    0.67,
+    0.92,
+    0.75,
+    0.58,
+    0.83,
+    0.67,
+    0.50,
+    0.75,
+    1.0,
+    0.67,
+    0.42,
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _pulseController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    )..repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    _pulseController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +191,19 @@ class _BlackLampScreenState extends State<BlackLampScreen> {
                           ),
                           const SizedBox(height: 12),
 
-                          // Description
+                          // Profile photo
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Container(
+                              width: double.infinity,
+                              height: 138,
+                              color: const Color(0xFF2A2A2A),
+                              child: const _ProfileImagePlaceholder(),
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+
+                          // Description with See More
                           GestureDetector(
                             onTap: () =>
                                 setState(() => _isExpanded = !_isExpanded),
@@ -160,16 +232,8 @@ class _BlackLampScreenState extends State<BlackLampScreen> {
                           ),
                           const SizedBox(height: 16),
 
-                          // Profile image
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: Container(
-                              width: double.infinity,
-                              height: 200,
-                              color: Colors.grey.shade800,
-                              child: const _ProfileImagePlaceholder(),
-                            ),
-                          ),
+                          // ── Audio waveform player ──────────────────────
+                          _buildAudioPlayer(),
                           const SizedBox(height: 14),
 
                           // Price
@@ -196,7 +260,7 @@ class _BlackLampScreenState extends State<BlackLampScreen> {
                               ),
                               Expanded(
                                 child: _OptionCheckbox(
-                                  label: 'SCHEDULE A 2\$ VIDEO SESSION',
+                                  label: 'SCHEDULE A VIDEO MEET',
                                   value: _scheduleVideoMeet,
                                   onChanged: (val) =>
                                       setState(() => _scheduleVideoMeet = val),
@@ -209,8 +273,7 @@ class _BlackLampScreenState extends State<BlackLampScreen> {
                             children: [
                               Expanded(
                                 child: _OptionCheckbox(
-                                  label:
-                                      'OFFER TO PAY FOR THEIR VIDEO SESSION FOR THEM',
+                                  label: 'OFFER TO PAY VIDEO SESSION',
                                   value: _offerToPayVideoSession,
                                   onChanged: (val) => setState(
                                     () => _offerToPayVideoSession = val,
@@ -219,7 +282,7 @@ class _BlackLampScreenState extends State<BlackLampScreen> {
                               ),
                               Expanded(
                                 child: _OptionCheckbox(
-                                  label: 'SEND A FREE VOICE MESSAGE',
+                                  label: 'SEND A VMAIL',
                                   value: _sendAVmail,
                                   onChanged: (val) =>
                                       setState(() => _sendAVmail = val),
@@ -270,6 +333,80 @@ class _BlackLampScreenState extends State<BlackLampScreen> {
                 ),
                 const SizedBox(height: 16),
               ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Audio waveform player row
+  Widget _buildAudioPlayer() {
+    return Container(
+      height: 48,
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.07),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        children: [
+          // Waveform bars
+          Expanded(
+            child: AnimatedBuilder(
+              animation: _pulseController,
+              builder: (context, _) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: List.generate(_waveHeights.length, (i) {
+                    final base = _waveHeights[i];
+                    // When playing, animate bars with a rolling phase offset
+                    final animated = _isPlaying
+                        ? base *
+                              (0.6 +
+                                  0.4 *
+                                      (0.5 +
+                                          0.5 *
+                                              _pulseController.value *
+                                              ((i % 5 == 0) ? 1 : -1)))
+                        : base;
+                    return Container(
+                      width: 3,
+                      height: (animated * 24).clamp(3.0, 24.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.65),
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                    );
+                  }),
+                );
+              },
+            ),
+          ),
+          const SizedBox(width: 10),
+          // Play / Pause button
+          GestureDetector(
+            onTap: () => setState(() => _isPlaying = !_isPlaying),
+            child: Container(
+              width: 34,
+              height: 34,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: const Color(0xFF7B3FF5),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFF7B3FF5).withOpacity(0.45),
+                    blurRadius: 8,
+                    spreadRadius: 1,
+                  ),
+                ],
+              ),
+              child: Icon(
+                _isPlaying ? Icons.pause : Icons.play_arrow,
+                color: Colors.white,
+                size: 20,
+              ),
             ),
           ),
         ],
@@ -332,7 +469,7 @@ class _OptionCheckbox extends StatelessWidget {
   }
 }
 
-// ── Profile image placeholder (grayscale person silhouette) ─────────────────
+// ── Profile image placeholder ────────────────────────────────────────────────
 
 class _ProfileImagePlaceholder extends StatelessWidget {
   const _ProfileImagePlaceholder();
@@ -373,7 +510,6 @@ class _ProfileImagePlaceholder extends StatelessWidget {
             ),
           ],
         ),
-        // Grayscale overlay hint text
         const Positioned(
           bottom: 8,
           child: Text(
@@ -440,7 +576,6 @@ class _StarPainter extends CustomPainter {
         Paint()..color = Colors.white.withOpacity(0.65),
       );
     }
-    // A few bright accent stars
     final bright = Paint()..color = Colors.white.withOpacity(0.9);
     canvas.drawCircle(
       Offset(size.width * 0.85, size.height * 0.28),
