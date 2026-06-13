@@ -50,7 +50,7 @@ class _StartupViewState extends State<StartupView> {
             const Spacer(),
 
             Image.asset(
-              'assets/startup_logo.png',
+              'assets/global_vmails_galaxy_logo.png',
               width: 220,
               height: 220,
               fit: BoxFit.contain,

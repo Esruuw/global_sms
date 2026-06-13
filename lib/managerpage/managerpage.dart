@@ -488,7 +488,7 @@ class _VoiceNotificationRowState extends State<_VoiceNotificationRow> {
               label: 'Video',
               onTap: () {
                 Navigator.of(context).push(
-                  MaterialPageRoute(builder: (_) => const VideoChatScreen()),
+                  MaterialPageRoute(builder: (_) => const VideoCallWaitingScreen()),
                 );
               },
             ),

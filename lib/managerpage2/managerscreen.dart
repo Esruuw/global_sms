@@ -521,7 +521,7 @@ class _ActionButtons extends StatelessWidget {
           onTap: () {
             Navigator.of(
               context,
-            ).push(MaterialPageRoute(builder: (_) => const VideoChatScreen()));
+            ).push(MaterialPageRoute(builder: (_) => const VideoCallWaitingScreen()));
           },
         ),
         const SizedBox(width: 6),
